@@ -8,3 +8,5 @@
 
 users = User.create([{ username: 'admin', salt: '', password: 'admin', is_super_admin: true },
                      { username: 'developer', salt: '', password: 'developer' }])
+
+stories = Story.create({ name: 'Task 1', description: 'Test description.' })
