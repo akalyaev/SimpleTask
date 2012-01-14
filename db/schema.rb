@@ -11,12 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120114103534) do
+ActiveRecord::Schema.define(:version => 20120114110132) do
+
+  create_table "user_profiles", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "surname",     :limit => 100
+    t.string   "given_names", :limit => 100
+    t.integer  "gender",        :default => 0
+    t.string   "phone",       :limit => 50
+    t.string   "mail",        :limit => 50
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
-    t.string   "username"
-    t.string   "salt"
-    t.string   "password"
+    t.string   "username",     :limit => 128
+    t.string   "salt",         :limit => 128
+    t.string   "password",     :limit => 128
     t.boolean  "is_active",      :default => true
     t.boolean  "is_super_admin", :default => false
     t.datetime "created_at"
