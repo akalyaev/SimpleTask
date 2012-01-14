@@ -20,6 +20,7 @@ gem 'jquery-rails'
 gem 'therubyracer'
 
 gem 'haml'
+gem "haml-rails"
 
 group :test, :development do
   gem 'turn', '< 0.8.3'
