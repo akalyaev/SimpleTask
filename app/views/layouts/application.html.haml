@@ -16,5 +16,11 @@
           = link_to "SimpleTask manager on Rails", root_path, :class => 'brand'
           %ul.nav
             %li.active= link_to "Home", root_path
-
-    = yield
+    .container-fluid
+      .sidebar
+        .well
+          %h5 Free developers
+      .content
+        = yield
+        %footer
+          %p &copy; My company 2011
