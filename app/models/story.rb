@@ -2,7 +2,7 @@ class Story < ActiveRecord::Base
   has_many :story_comments
   belongs_to :user
 
-  STATUS = {
+  STATUSES = {
     0 => 'new',
     1 => 'started',
     2 => 'finished',
@@ -10,7 +10,7 @@ class Story < ActiveRecord::Base
     4 => 'rejected'
   }
 
-  def getStatus
-    STATUS[@status]
+  def status_text
+    STATUSES[self.status]
   end
 end
