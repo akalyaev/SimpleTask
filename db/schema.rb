@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20120114110132) do
     t.integer  "user_id"
     t.string   "surname",     :limit => 100
     t.string   "given_names", :limit => 100
-    t.integer  "gender",        :default => 0
+    t.integer  "gender",                     :default => 0
     t.string   "phone",       :limit => 50
     t.string   "mail",        :limit => 50
     t.datetime "created_at"
@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(:version => 20120114110132) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username",     :limit => 128
-    t.string   "salt",         :limit => 128
-    t.string   "password",     :limit => 128
-    t.boolean  "is_active",      :default => true
-    t.boolean  "is_super_admin", :default => false
+    t.string   "username",       :limit => 128
+    t.string   "salt",           :limit => 128
+    t.string   "password",       :limit => 128
+    t.boolean  "is_active",                     :default => true
+    t.boolean  "is_super_admin",                :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
