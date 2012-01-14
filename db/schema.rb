@@ -11,15 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120114112701) do
+ActiveRecord::Schema.define(:version => 20120114112159) do
 
   create_table "developers", :force => true do |t|
     t.integer "user_id"
     t.boolean "busy",    :default => false
-  end
-
-  create_table "statuses", :force => true do |t|
-    t.string "name", :limit => 50
   end
 
   create_table "user_profiles", :force => true do |t|
