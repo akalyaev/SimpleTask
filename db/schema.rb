@@ -14,12 +14,8 @@
 ActiveRecord::Schema.define(:version => 20120114114050) do
 
   create_table "developers", :force => true do |t|
-    t.integer "user_id"
+    t.integer "user_id",                    :null => false
     t.boolean "busy",    :default => false
-  end
-
-  create_table "statuses", :force => true do |t|
-    t.string "name", :limit => 50
   end
 
   create_table "stories", :force => true do |t|
@@ -35,18 +31,18 @@ ActiveRecord::Schema.define(:version => 20120114114050) do
   end
 
   create_table "user_profiles", :force => true do |t|
-    t.integer "user_id"
-    t.string  "surname",     :limit => 100
-    t.string  "given_names", :limit => 100
+    t.integer "user_id",                                   :null => false
+    t.string  "surname",     :limit => 100,                :null => false
+    t.string  "given_names", :limit => 100,                :null => false
     t.integer "gender",                     :default => 0
     t.string  "phone",       :limit => 50
     t.string  "mail",        :limit => 50
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username",       :limit => 128
-    t.string   "salt",           :limit => 128
-    t.string   "password",       :limit => 128
+    t.string   "username",       :limit => 128,                    :null => false
+    t.string   "salt",           :limit => 128,                    :null => false
+    t.string   "password",       :limit => 128,                    :null => false
     t.boolean  "is_active",                     :default => true
     t.boolean  "is_super_admin",                :default => false
     t.datetime "created_at"
