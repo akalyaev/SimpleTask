@@ -7,8 +7,6 @@ class CreateUserProfiles < ActiveRecord::Migration
       t.integer :gender, default: 0 # 0 - Male, 1 - Female
       t.string :phone, limit: 50
       t.string :mail, limit: 50
-
-      t.timestamps
     end
   end
 end

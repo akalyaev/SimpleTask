@@ -11,17 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120114110132) do
+ActiveRecord::Schema.define(:version => 20120114112159) do
+
+  create_table "developers", :force => true do |t|
+    t.integer "user_id"
+    t.boolean "busy",    :default => false
+  end
 
   create_table "user_profiles", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "surname",     :limit => 100
-    t.string   "given_names", :limit => 100
-    t.integer  "gender",                     :default => 0
-    t.string   "phone",       :limit => 50
-    t.string   "mail",        :limit => 50
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "user_id"
+    t.string  "surname",     :limit => 100
+    t.string  "given_names", :limit => 100
+    t.integer "gender",                     :default => 0
+    t.string  "phone",       :limit => 50
+    t.string  "mail",        :limit => 50
   end
 
   create_table "users", :force => true do |t|
