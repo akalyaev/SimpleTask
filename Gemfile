@@ -19,6 +19,8 @@ end
 gem 'jquery-rails'
 gem 'therubyracer'
 
+gem 'haml'
+
 group :test, :development do
   gem 'turn', '< 0.8.3'
   gem 'rspec-rails'
