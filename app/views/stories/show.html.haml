@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @story.name
+%p
+  %b Description:
+  = @story.description
+%p
+  %b Status:
+  = @story.status
+%p
+  %b User:
+  = @story.user_id
+%p
+  %b Points:
+  = @story.points
+%p
+  %b Priority:
+  = @story.priority
+
+= link_to 'Edit', edit_story_path(@story)
+\|
+= link_to 'Back', stories_path
