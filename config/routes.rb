@@ -1,6 +1,7 @@
 SimpleTask::Application.routes.draw do
-  resources :stories
+  root :to => 'stories#index'
 
+  resources :stories
   resources :users
 
   # The priority is based upon order of creation:
