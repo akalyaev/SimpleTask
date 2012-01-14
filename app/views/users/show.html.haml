@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Username:
+  = @user.username
+%p
+  %b Salt:
+  = @user.salt
+%p
+  %b Password:
+  = @user.password
+%p
+  %b Is active:
+  = @user.is_active
+%p
+  %b Is super admin:
+  = @user.is_super_admin
+
+= link_to 'Edit', edit_user_path(@user)
+\|
+= link_to 'Back', users_path
