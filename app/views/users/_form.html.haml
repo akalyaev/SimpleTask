@@ -6,20 +6,25 @@
         - @user.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :username
-    = f.text_field :username
-  .field
-    = f.label :salt
-    = f.text_field :salt
-  .field
-    = f.label :password
-    = f.text_field :password
-  .field
-    = f.label :is_active
-    = f.check_box :is_active
-  .field
-    = f.label :is_super_admin
-    = f.check_box :is_super_admin
+  %fieldset
+    .clearfix
+      = f.label :username
+      .input
+        = f.text_field :username
+    .clearfix
+      = f.label :password
+      .input
+        = f.text_field :password
+    .clearfix
+      = f.label :is_active
+      .input
+        = f.check_box :is_active
+    .clearfix
+      = f.label :is_super_admin
+      .input
+        = f.check_box :is_super_admin
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', :class => "btn primary"
+    -if @user.persisted?
+      = link_to 'Cancel', @user, :class => "btn"
+    = link_to 'List', users_path, :class => "btn"
