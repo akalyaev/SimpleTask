@@ -9,8 +9,13 @@
       %small= @story.status_text
   .row
     .span4.columns
-      Developer section
-      = @story.user_id
+      -if @story.user_id
+        %figure
+          %img{:src => "/assets/developers/no_developer.jpg", :width => "118px", :height => "118px"}
+          %figcaption
+            %p= @story.user.user_profile.full_name
+      -else
+        %h4 Not assigned yet
     .span12.columns
       %h3 Description
       %pre.prettyprint
