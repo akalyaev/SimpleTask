@@ -29,7 +29,7 @@
     .clearfix
       = f.label :priority
       .input
-        = f.number_field :priority
+        = f.select :priority, Story.priority_options
     .actions
       = f.submit 'Save', :class => "btn primary"
       -if @story.persisted?

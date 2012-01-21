@@ -7,11 +7,19 @@ class Story < ActiveRecord::Base
   POINT_MAX = 5
 
   STATUSES = {
-    0 => 'new',
-    1 => 'started',
-    2 => 'finished',
-    3 => 'accepted',
-    4 => 'rejected'
+    0 => 'New',
+    1 => 'Started',
+    2 => 'Finished',
+    3 => 'Accepted',
+    4 => 'Rejected'
+  }
+
+  PRIORITIES = {
+    1 => 'Low',
+    2 => 'Normal',
+    3 => 'High',
+    4 => 'Urgent',
+    5 => 'Immediate'
   }
 
   # validation
@@ -52,7 +60,15 @@ class Story < ActiveRecord::Base
     POINT_MIN..POINT_MAX
   end
 
+  def self.priority_options
+    PRIORITIES.invert
+  end
+
   def status_text
     STATUSES[self.status]
+  end
+
+  def priority_text
+    PRIORITIES[self.priority]
   end
 end
