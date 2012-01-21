@@ -1,21 +1,18 @@
-%p#notice= notice
+- if notice
+  .alert-message.info
+    %p= notice
 
-%p
-  %b Username:
-  = @user.username
-%p
-  %b Salt:
-  = @user.salt
-%p
-  %b Password:
-  = @user.password
-%p
-  %b Is active:
-  = @user.is_active
-%p
-  %b Is super admin:
-  = @user.is_super_admin
+%section
+  .page-header
+    %h1
+      = @user.username
+    .row
+      %h3
+        - @user.is_active ? "Active" : "Not active"
+      %h3
+        - @user.is_super_admin ? "Super admin" : ""
 
-= link_to 'Edit', edit_user_path(@user)
-\|
-= link_to 'Back', users_path
+= link_to 'Edit', edit_user_path(@user), :class => "btn primary"
+= link_to 'Back', users_path, :class => "btn"
+%p.pull-right
+  = link_to 'Destroy', @user, :confirm => 'Are you sure?', :method => :delete, :class => "btn danger"

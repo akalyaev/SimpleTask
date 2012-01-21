@@ -1,27 +1,21 @@
-%h1 Listing users
+.row
+  .span12
+    %h1 Users
 
-%table
-  %tr
-    %th Username
-    %th Salt
-    %th Password
-    %th Is active
-    %th Is super admin
-    %th
-    %th
-    %th
+    %table.zebra-striped
+      %tr
+        %th Username
+        %th Is active
+        %th Is super admin
+        %th
+        %th
 
-  - @users.each do |user|
-    %tr
-      %td= user.username
-      %td= user.salt
-      %td= user.password
-      %td= user.is_active
-      %td= user.is_super_admin
-      %td= link_to 'Show', user
-      %td= link_to 'Edit', edit_user_path(user)
-      %td= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete
+      - @users.each do |user|
+        %tr
+          %td= user.username
+          %td= user.is_active ? "yes" : "no"
+          %td= user.is_super_admin ? "yes" : "no"
+          %td= link_to 'Show', user
+          %td= link_to 'Edit', edit_user_path(user)
 
-%br
-
-= link_to 'New User', new_user_path
+    = link_to 'New User', new_user_path, :class => "btn primary"
