@@ -15,6 +15,8 @@ class StoriesController < ApplicationController
   def show
     @story = Story.find(params[:id])
 
+    @story_comments = StoryComment.find_all_by_story_id(@story.id)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @story }
