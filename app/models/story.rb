@@ -20,7 +20,7 @@ class Story < ActiveRecord::Base
     for d in developers do
       user = d.user
       profile = user.user_profile
-      options[user.id] = profile.full_name
+      options[user.id] = profile ? profile.full_name : user.username
     end
     options
   end
