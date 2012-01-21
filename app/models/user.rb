@@ -12,4 +12,10 @@ class User < ActiveRecord::Base
 
   validates_inclusion_of :is_active, :in => [true, false]
   validates_inclusion_of :is_super_admin, :in => [true, false]
+
+  def create
+    # TODO [Anton Kalyaev 21/01/2012] generate a salt here and hash a password
+    self.salt = "XXX"
+    super
+  end
 end
