@@ -16,11 +16,11 @@
       %pre.prettyprint
         = @story.description
       %h3
-        Points
+        Points -
         = @story.points
       %h3
-        Priority
-        = @story.priority
+        Priority -
+        = @story.priority_text
 
 = link_to 'Edit', edit_story_path(@story), :class => "btn primary"
 = link_to 'List', stories_path, :class => "btn"
