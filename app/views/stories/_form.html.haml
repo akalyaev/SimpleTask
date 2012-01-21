@@ -5,24 +5,32 @@
       %ul
         - @story.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :status
-    = f.number_field :status
-  .field
-    = f.label :user_id
-    = f.number_field :user_id
-  .field
-    = f.label :points
-    = f.number_field :points
-  .field
-    = f.label :priority
-    = f.number_field :priority
-  .actions
-    = f.submit 'Save'
+  %fieldset
+    .clearfix
+      = f.label :name
+      .input
+        = f.text_field :name
+    .clearfix
+      = f.label :description
+      .input
+        = f.text_area :description
+    .clearfix
+      = f.label :status
+      .input
+        = f.number_field :status
+    .clearfix
+      = f.label :user_id
+      .input
+        = f.number_field :user_id
+    .clearfix
+      = f.label :points
+      .input
+        = f.number_field :points
+    .clearfix
+      = f.label :priority
+      .input
+        = f.number_field :priority
+    .actions
+      = f.submit 'Save', :class => "btn primary"
+      = link_to 'Cancel', @story, :class => "btn"
+      = link_to 'List', stories_path, :class => "btn"
