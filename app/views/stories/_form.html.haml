@@ -32,5 +32,6 @@
         = f.number_field :priority
     .actions
       = f.submit 'Save', :class => "btn primary"
-      = link_to 'Cancel', @story, :class => "btn"
+      -if @story.persisted?
+        = link_to 'Cancel', @story, :class => "btn"
       = link_to 'List', stories_path, :class => "btn"
