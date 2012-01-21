@@ -2,6 +2,21 @@ class Story < ActiveRecord::Base
   has_many :story_comments
   belongs_to :user
 
+  validates_presence_of :name
+  validates_length_of :name, :maximum => 128
+
+  validates_numericality_of :status,
+                            :only_integer => true,
+                            :less_than_or_equal_to => 4, :greater_than_or_equal_to => 0
+
+  validates_numericality_of :points,
+                            :only_integer => true,
+                            :less_than_or_equal_to => 5, :greater_than_or_equal_to => 1
+
+  validates_numericality_of :priority,
+                            :only_integer => true,
+                            :less_than_or_equal_to => 5, :greater_than_or_equal_to => 1
+
   STATUSES = {
     0 => 'new',
     1 => 'started',
