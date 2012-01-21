@@ -10,6 +10,21 @@ class Story < ActiveRecord::Base
     4 => 'rejected'
   }
 
+  def self.status_options
+    STATUSES.invert
+  end
+
+  def self.user_options
+    developers = Developer.all
+    options = []
+    for d in developers do
+      user = d.user
+      profile = user.user_profile
+      options[user.id] = profile.full_name
+    end
+    options
+  end
+
   def status_text
     STATUSES[self.status]
   end
