@@ -2,6 +2,7 @@ class Story < ActiveRecord::Base
   has_many :story_comments
   belongs_to :user
 
+  # const declaration
   POINT_MIN = 1
   POINT_MAX = 5
 
@@ -13,6 +14,7 @@ class Story < ActiveRecord::Base
     4 => 'rejected'
   }
 
+  # validation
   validates_presence_of :name
   validates_length_of :name, :maximum => 128
 
@@ -28,6 +30,7 @@ class Story < ActiveRecord::Base
                             :only_integer => true,
                             :less_than_or_equal_to => 5, :greater_than_or_equal_to => 1
 
+  # get options section
   def self.status_options
     STATUSES.invert
   end
