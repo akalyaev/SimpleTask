@@ -1,3 +1,38 @@
 // Place all the styles related to the Stories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Story list */
+.stories {
+  .story {
+    background-color: lightBlue;
+    display: block;
+    padding: 8.5px;
+    margin: 0 0 18px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+
+    a:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+/* Story labels */
+.label {
+  &.new {
+    background-color: #46a546;
+  }
+  &.started {
+    background-color: #f89406;
+  }
+  &.accepted {
+    background-color: #62cffc;
+  }
+  &.rejected {
+    background-color: #c43c35;
+  }
+}
