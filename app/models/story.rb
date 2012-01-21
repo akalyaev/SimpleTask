@@ -15,12 +15,13 @@ class Story < ActiveRecord::Base
   end
 
   def self.user_options
-    developers = Developer.all
+    developers = Developer.find(:all, :order => 'up.given_names ASC, up.surname ASC',
+                                :joins => "LEFT JOIN user_profiles up ON (up.user_id = developers.user_id)")
     options = []
     for d in developers do
       user = d.user
       profile = user.user_profile
-      options[user.id] = profile ? profile.full_name : user.username
+      options << [profile ? profile.full_name : user.username, user.id]
     end
     options
   end
