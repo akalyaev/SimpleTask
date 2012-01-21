@@ -19,7 +19,7 @@
       .input
         = f.select :status, Story.status_options
     .clearfix
-      = f.label :user_id
+      = f.label :user_id, "Assignee"
       .input
         = f.select :user_id, Story.user_options
     .clearfix
