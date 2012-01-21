@@ -25,7 +25,7 @@
     .clearfix
       = f.label :points
       .input
-        = f.number_field :points
+        = f.select :points, Story.points_options
     .clearfix
       = f.label :priority
       .input

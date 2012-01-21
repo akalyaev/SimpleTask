@@ -2,6 +2,17 @@ class Story < ActiveRecord::Base
   has_many :story_comments
   belongs_to :user
 
+  POINT_MIN = 1
+  POINT_MAX = 5
+
+  STATUSES = {
+    0 => 'new',
+    1 => 'started',
+    2 => 'finished',
+    3 => 'accepted',
+    4 => 'rejected'
+  }
+
   validates_presence_of :name
   validates_length_of :name, :maximum => 128
 
@@ -11,19 +22,11 @@ class Story < ActiveRecord::Base
 
   validates_numericality_of :points,
                             :only_integer => true,
-                            :less_than_or_equal_to => 5, :greater_than_or_equal_to => 1
+                            :less_than_or_equal_to => POINT_MAX, :greater_than_or_equal_to => POINT_MIN
 
   validates_numericality_of :priority,
                             :only_integer => true,
                             :less_than_or_equal_to => 5, :greater_than_or_equal_to => 1
-
-  STATUSES = {
-    0 => 'new',
-    1 => 'started',
-    2 => 'finished',
-    3 => 'accepted',
-    4 => 'rejected'
-  }
 
   def self.status_options
     STATUSES.invert
@@ -40,6 +43,10 @@ class Story < ActiveRecord::Base
       options << [profile ? profile.full_name : user.username, user.id]
     end
     options
+  end
+
+  def self.points_options
+    POINT_MIN..POINT_MAX
   end
 
   def status_text
