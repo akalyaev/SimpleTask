@@ -3,7 +3,7 @@ class UserProfile < ActiveRecord::Base
 
   def full_name(reverse=false)
     reverse ?
-      "#{self.given_names} #{self.surname}" :
-      "#{self.surname}, #{self.given_names}"
+      "#{self.surname}, #{self.given_names}" :
+      "#{self.given_names} #{self.surname}"
   end
 end
