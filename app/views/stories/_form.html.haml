@@ -17,11 +17,11 @@
     .clearfix
       = f.label :status
       .input
-        = f.number_field :status
+        = f.select :status, Story.status_options
     .clearfix
       = f.label :user_id
       .input
-        = f.number_field :user_id
+        = f.select :user_id, Story.user_options
     .clearfix
       = f.label :points
       .input
