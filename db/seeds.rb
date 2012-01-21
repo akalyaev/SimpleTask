@@ -9,4 +9,11 @@
 users = User.create([{ username: 'admin', salt: '', password: 'admin', is_super_admin: true },
                      { username: 'developer', salt: '', password: 'developer' }])
 
+profiles = UserProfile.create([{ user: users.first, surname: "John", given_names: "Doe",
+                                 gender: 0, phone: "444-444", mail: "admin@st.com" },
+                               { user: users.last, surname: "Nick", given_names: "Doe",
+                                 gender: 0, phone: "444-444", mail: "nick@st.com" }])
+
+developers = Developer.create({ user: users.last, busy: 0 })
+
 stories = Story.create({ name: 'Task 1', description: 'Test description.' })
