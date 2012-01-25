@@ -27,13 +27,15 @@
         Priority -
         = @story.priority_text
 
-      %h3
-        Comments
+      %h3 Comments
+      #comments
         - @story_comments.each do |comment|
           .comment
             %p= "#{comment.user.user_profile.full_name} (#{comment.created_at})"
             %pre
               = comment.comment
+      #comment_add
+        = render 'story_comments/form'
 
 = link_to 'Edit', edit_story_path(@story), :class => "btn primary"
 = link_to 'List', stories_path, :class => "btn"
