@@ -1,8 +1,12 @@
 SimpleTask::Application.routes.draw do
+  get "story_comments_controller/create"
+
   root :to => 'stories#index'
 
-  resources :stories
-  resources :story_comments
+  resources :stories do
+    resources :story_comments
+  end
+
   resources :users
   # The priority is based upon order of creation:
   # first created -> highest priority.

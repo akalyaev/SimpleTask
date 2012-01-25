@@ -1,4 +1,4 @@
-= form_for @story_comment do |f|
+= form_for @story_comment, :url => "#{@story.id}/story_comments" do |f|
   -if @story_comment.errors.any?
     .alert-message.block-message.error
       %h2= "Sorry, there appears to be errors on this form. Please correct the following errors and resubmit."
