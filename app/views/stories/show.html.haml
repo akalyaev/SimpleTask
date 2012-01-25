@@ -34,7 +34,8 @@
             %p= "#{comment.user.user_profile.full_name} (#{comment.created_at})"
             %pre
               = comment.comment
-      #comment_add
+      = button_tag 'Add comment', :class => "btn primary", :id => "comment_add_btn"
+      #comment_add_form{:style => "display: none;"}
         = render 'story_comments/form'
 
 = link_to 'Edit', edit_story_path(@story), :class => "btn primary"
