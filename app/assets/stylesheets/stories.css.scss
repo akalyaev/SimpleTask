@@ -15,6 +15,14 @@
     -moz-border-radius: 3px;
     border-radius: 3px;
 
+    &.visible {
+      display: block;
+    }
+
+    &.hidden {
+      display: none;
+    }
+
     a:hover {
       text-decoration: none;
     }

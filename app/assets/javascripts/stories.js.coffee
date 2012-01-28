@@ -14,7 +14,7 @@ $ ->
 
     status = $(this).attr('rel');
     if status is 'all'
-      $('.stories .story').show();
+      $('.stories .story').removeClass('hidden').addClass('visible');
     else
-      $('.stories .story:not(.status-' + status + ')').hide();
-      $('.stories .story.status-' + status).show();
+      $('.stories .story:not(.status-' + status + ')').removeClass('visible').addClass('hidden');
+      $('.stories .story.status-' + status).removeClass('hidden').addClass('visible');
