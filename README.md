@@ -1,8 +1,10 @@
-== SimpleTask
+SimpleTask
+===============================================
 
 It is a simple task system, based on the Rails 3.
 
-== Future changes
+Future changes
+------------
 
 1. Authorization
 2. User profile page
