@@ -3,11 +3,11 @@
     %h5 Free developers
     %ul.developers
       - @free_developers.each do |developer|
-        %li= developer.name
+        %li= render 'developer', :developer => developer
     %h5 Busy developers
     %ul.developers
       - @busy_developers.each do |developer|
-        %li= developer.name
+        %li= render 'developer', :developer => developer
 .content
   .row
     .span17
