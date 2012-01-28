@@ -84,4 +84,16 @@ class Story < ActiveRecord::Base
     self.active = false if (Story.total_points(true) >= MAX_POINTS_FOR_SPRINT)
     super
   end
+
+  def self.count_stories_grouped_by_status
+    data = {"All" => 0}
+    total = 0
+    STATUSES.each do |key, status|
+      count = Story.where(:status => key, :active => true).count
+      data[status] = count
+      total += count
+    end
+    data["All"] = total
+    data
+  end
 end

@@ -11,10 +11,15 @@
 .content
   .row
     .span17
+      .statuses
+        - Story.count_stories_grouped_by_status.each do |status, count|
+          %span{:class => "status #{status.downcase == 'all' ? 'selected' : ''}"}
+            %a{:rel=> "#{status.downcase}"}= status
+            %span.count= "(#{count})"
       %h2 Active sprint
       .stories
         - @stories.each do |story|
-          .story
+          %div{:class => "story status-#{story.status_text.downcase}"}
             %h3= link_to story.name, story
             %p.pull-right
               %span{:class => "label #{story.status_text.downcase}"}= story.status_text
