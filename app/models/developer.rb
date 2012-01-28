@@ -8,7 +8,7 @@ class Developer < ActiveRecord::Base
     self.user.to_s
   end
 
-  def count_stories
-    Story.where(:user_id => self.user_id).count
+  def count_active_stories
+    Story.where(:user_id => self.user_id, :active => true).count
   end
 end
