@@ -13,7 +13,7 @@
         %figure
           %img{:src => "/assets/developers/no_developer.jpg", :width => "118px", :height => "118px"}
           %figcaption
-            %p= @story.user.user_profile.full_name
+            %p= @story.user
       -else
         %h4 Not assigned yet
     .span12.columns
@@ -31,7 +31,7 @@
       #comments
         - @story_comments.each do |comment|
           .comment
-            %p= "#{comment.user.user_profile.full_name} (#{comment.created_at})"
+            %p= "#{comment.user} (#{comment.created_at})"
             %pre
               = comment.comment
       = button_tag 'Add comment', :class => "btn primary", :id => "comment_add_btn"

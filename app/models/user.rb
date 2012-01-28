@@ -18,4 +18,9 @@ class User < ActiveRecord::Base
     self.salt = "XXX"
     super
   end
+
+  def to_s
+    profile = self.user_profile
+    profile ? profile.full_name : self.username
+  end
 end

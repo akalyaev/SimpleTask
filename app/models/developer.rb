@@ -4,10 +4,8 @@ class Developer < ActiveRecord::Base
   scope :free, where(:busy => false)
   scope :busy, where(:busy => true)
 
-  def name
-    user = self.user
-    profile = user.user_profile
-    profile ? profile.full_name : user.username
+  def to_s
+    self.user.to_s
   end
 
   def count_stories
