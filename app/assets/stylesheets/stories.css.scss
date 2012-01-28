@@ -37,7 +37,6 @@
   .status {
     margin-right: 4px;
     padding: 4px 8px 3px;
-    cursor: pointer;
 
     &.selected {
       background: none repeat scroll 0 0 #EFEFEF;
@@ -52,6 +51,7 @@
     }
 
     a {
+      cursor: pointer;
       color: #888888;
       font-weight: bold;
     }
@@ -85,6 +85,10 @@
     .stories_lnk {
       float: right;
       margin-top: 2px;
+
+      a {
+        cursor: pointer;
+      }
     }
   }
 }
