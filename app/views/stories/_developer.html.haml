@@ -1,5 +1,7 @@
 .developer
-  = developer.name
-  %span.stories_lnk
-    %a{:rel => "user-#{developer.user_id}"}
-      %img{:src => "/assets/icons/list_small.png"}
+  - count_stories = developer.count_stories
+  = "#{developer.name} (#{count_stories})"
+  - if count_stories > 0
+    %span.stories_lnk
+      %a{:rel => "user-#{developer.user_id}"}
+        %img{:src => "/assets/icons/list_small.png"}

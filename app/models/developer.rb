@@ -9,4 +9,8 @@ class Developer < ActiveRecord::Base
     profile = user.user_profile
     profile ? profile.full_name : user.username
   end
+
+  def count_stories
+    Story.where(:user_id => self.user_id).count
+  end
 end
