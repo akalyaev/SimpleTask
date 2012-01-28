@@ -55,9 +55,7 @@ class Story < ActiveRecord::Base
                                 :joins => "LEFT JOIN user_profiles up ON (up.user_id = developers.user_id)")
     options = [["", nil]]
     for d in developers do
-      user = d.user
-      profile = user.user_profile
-      options << [profile ? profile.full_name : user.username, user.id]
+      options << d.name
     end
     options
   end
