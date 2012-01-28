@@ -1,25 +1,30 @@
-.row
-  .span17
-    %h2 Active sprint
-    .stories
-      - @stories.each do |story|
-        .story
-          %h3= link_to story.name, story
-          %p.pull-right
-            %span{:class => "label #{story.status_text.downcase}"}= story.status_text
-          .description
-            = story.description
-          -#%td= story.user_id
-          -#%td= story.points
-          -#%td= story.priority
-    = link_to 'New Story', new_story_path, :class => "btn primary"
-  .span3
-    %h2 Backlog
-    .stories
-      - @backlog_stories.each do |story|
-        .story
-          %h3= link_to story.name, story
-          %p.pull-right
-            %span{:class => "label #{story.status_text.downcase}"}= story.status_text
-          .description
-            = story.description
+.sidebar
+  .well
+    %h5 Free developers
+    .developers
+.content
+  .row
+    .span17
+      %h2 Active sprint
+      .stories
+        - @stories.each do |story|
+          .story
+            %h3= link_to story.name, story
+            %p.pull-right
+              %span{:class => "label #{story.status_text.downcase}"}= story.status_text
+            .description
+              = story.description
+            -#%td= story.user_id
+            -#%td= story.points
+            -#%td= story.priority
+      = link_to 'New Story', new_story_path, :class => "btn primary"
+    .span3
+      %h2 Backlog
+      .stories
+        - @backlog_stories.each do |story|
+          .story
+            %h3= link_to story.name, story
+            %p.pull-right
+              %span{:class => "label #{story.status_text.downcase}"}= story.status_text
+            .description
+              = story.description
