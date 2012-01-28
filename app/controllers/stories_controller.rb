@@ -5,6 +5,9 @@ class StoriesController < ApplicationController
     @stories = Story.all_active
     @backlog_stories = Story.backlog
 
+    @free_developers = Developer.free
+    @busy_developers = Developer.busy
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @stories }

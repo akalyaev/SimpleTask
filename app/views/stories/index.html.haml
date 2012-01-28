@@ -1,7 +1,13 @@
 .sidebar
   .well
     %h5 Free developers
-    .developers
+    %ul.developers
+      - @free_developers.each do |developer|
+        %li= developer.name
+    %h5 Busy developers
+    %ul.developers
+      - @busy_developers.each do |developer|
+        %li= developer.name
 .content
   .row
     .span17
