@@ -19,12 +19,13 @@ ActiveRecord::Schema.define(:version => 20120114114839) do
   end
 
   create_table "stories", :force => true do |t|
-    t.string   "name",        :limit => 128,                :null => false
+    t.string   "name",        :limit => 128,                   :null => false
     t.text     "description"
     t.integer  "status",                     :default => 0
     t.integer  "user_id"
     t.integer  "points",                     :default => 3
     t.integer  "priority",                   :default => 3
+    t.boolean  "active",                     :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
