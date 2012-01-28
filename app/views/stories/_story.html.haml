@@ -1,6 +1,7 @@
 - status_cls = "status-#{story.status_text.downcase}"
 - user_cls = story.user_id ? "user-#{story.user_id}" : ""
 %div{:class => "story #{status_cls} #{user_cls}"}
+  %p{:class => "priority #{story.priority_text.downcase}", :title => "#{story.priority_text} priority"}
   %h3= link_to story.name, story
   %p.pull-right
     %span{:class => "label #{story.status_text.downcase}"}= story.status_text
@@ -8,4 +9,3 @@
     = story.description_short
   -#%td= story.user_id
   -#%td= story.points
-  -#%td= story.priority

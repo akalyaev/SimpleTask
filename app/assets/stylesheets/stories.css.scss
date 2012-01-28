@@ -26,6 +26,35 @@
     a:hover {
       text-decoration: none;
     }
+
+    $priority-color: #FF0000;
+
+    .priority {
+      background-color: $priority-color;
+      float: left;
+      width: 5px;
+      height: 28px;
+      margin: 4px 5px 4px 0;
+      -webkit-border-radius: 1px;
+      -moz-border-radius: 1px;
+      border-radius: 1px;
+
+      &.low {
+        background-color: lighten($priority-color, 40%);
+      }
+      &.normal {
+        background-color: lighten($priority-color, 30%);
+      }
+      &.high {
+        background-color: lighten($priority-color, 20%);
+      }
+      &.urgent {
+        background-color: lighten($priority-color, 10%);
+      }
+      &.immediate {
+        background-color: $priority-color;
+      }
+    }
   }
 }
 
