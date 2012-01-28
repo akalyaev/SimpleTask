@@ -10,7 +10,7 @@
         %li= render 'developer', :developer => developer
 .content
   .row
-    .span17
+    .span13
       .statuses
         - Story.count_stories_grouped_by_status.each do |status, count|
           %span{:class => "status #{status.downcase == 'all' ? 'selected' : ''}"}

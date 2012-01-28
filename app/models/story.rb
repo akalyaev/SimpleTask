@@ -76,6 +76,10 @@ class Story < ActiveRecord::Base
     PRIORITIES[self.priority]
   end
 
+  def description_short
+    description.truncate(128)
+  end
+
   def self.total_points(active=true)
     where(:active => active).sum(:points)
   end

@@ -5,7 +5,7 @@
   %p.pull-right
     %span{:class => "label #{story.status_text.downcase}"}= story.status_text
   .description
-    = story.description
+    = story.description_short
   -#%td= story.user_id
   -#%td= story.points
   -#%td= story.priority
