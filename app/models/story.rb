@@ -2,7 +2,11 @@ class Story < ActiveRecord::Base
   has_many :story_comments
   belongs_to :user
 
+  default_scope where(:deleted_at => nil)
+
   # const declaration
+  MAX_POINTS_IN_CURRENT = 10
+
   POINT_MIN = 1
   POINT_MAX = 5
 
@@ -70,5 +74,14 @@ class Story < ActiveRecord::Base
 
   def priority_text
     PRIORITIES[self.priority]
+  end
+
+  def self.total_points(active=true)
+    where(:active => active).sum(:points)
+  end
+
+  def create
+    self.active = false if (Story.total_points(true) >= MAX_POINTS_IN_CURRENT)
+    super
   end
 end
