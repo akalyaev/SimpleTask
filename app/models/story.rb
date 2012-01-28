@@ -3,6 +3,8 @@ class Story < ActiveRecord::Base
   belongs_to :user
 
   default_scope where(:deleted_at => nil)
+  scope :all_active, where(:active => true)
+  scope :backlog, where(:active => false)
 
   # const declaration
   MAX_POINTS_IN_CURRENT = 10
