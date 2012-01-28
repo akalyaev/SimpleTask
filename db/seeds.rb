@@ -19,6 +19,6 @@ profiles = UserProfile.create([{ user: users[0], surname: "Doe", given_names: "J
 
 developers = Developer.create([{ user: users[1], busy: 1 }, { user: users[2], busy: 0 }])
 
-stories = Story.create([{ name: 'Task 1', description: 'Test description.', user: user[1], points: 5 },
+stories = Story.create([{ name: 'Task 1', description: 'Test description.', points: 5 },
                         { name: 'Task 2', description: 'Test description.', points: 5 },
                         { name: 'Task in backlog', description: 'Test description.', points: 2, active: false }])
