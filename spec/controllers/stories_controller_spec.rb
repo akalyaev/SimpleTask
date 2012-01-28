@@ -28,10 +28,16 @@ describe StoriesController do
   end
 
   describe "GET index" do
-    it "assigns all stories as @stories" do
+    it "assigns active stories as @stories" do
       story = Story.create! valid_attributes
       get :index
       assigns(:stories).should eq([story])
+    end
+
+    it "assigns backlog stories as @stories" do
+      story = Story.create! valid_attributes.merge({ :active => false })
+      get :index
+      assigns(:backlog_stories).should eq([story])
     end
   end
 
