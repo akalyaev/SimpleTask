@@ -19,7 +19,9 @@
       %h2 Active sprint
       .stories
         - @stories.each do |story|
-          %div{:class => "story status-#{story.status_text.downcase}"}
+          - status_cls = "status-#{story.status_text.downcase}"
+          - user_cls = story.user_id ? "user-#{story.user_id}" : ""
+          %div{:class => "story #{status_cls} #{user_cls}"}
             %h3= link_to story.name, story
             %p.pull-right
               %span{:class => "label #{story.status_text.downcase}"}= story.status_text

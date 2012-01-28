@@ -18,3 +18,8 @@ $ ->
     else
       $('.stories .story:not(.status-' + status + ')').removeClass('visible').addClass('hidden');
       $('.stories .story.status-' + status).removeClass('hidden').addClass('visible');
+
+  $('.developers .developer a').click ->
+    user_cls = $(this).attr('rel');
+    $('.stories .story:not(.' + user_cls + ')').removeClass('visible').addClass('hidden');
+    $('.stories .story.' + user_cls).removeClass('hidden').addClass('visible');

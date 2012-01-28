@@ -29,6 +29,7 @@
   }
 }
 
+/* Statuses */
 .statuses {
   font-size: 1em;
   margin-bottom: 10px;
@@ -75,5 +76,15 @@
   }
   &.rejected {
     background-color: #c43c35;
+  }
+}
+
+/* Developers sidebar */
+.developers {
+  .developer {
+    .stories_lnk {
+      float: right;
+      margin-top: 2px;
+    }
   }
 }
