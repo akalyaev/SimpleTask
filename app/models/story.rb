@@ -7,7 +7,7 @@ class Story < ActiveRecord::Base
   scope :backlog, where(:active => false)
 
   # const declaration
-  MAX_POINTS_IN_CURRENT = 10
+  MAX_POINTS_FOR_SPRINT = 10
 
   POINT_MIN = 1
   POINT_MAX = 5
@@ -83,7 +83,7 @@ class Story < ActiveRecord::Base
   end
 
   def create
-    self.active = false if (Story.total_points(true) >= MAX_POINTS_IN_CURRENT)
+    self.active = false if (Story.total_points(true) >= MAX_POINTS_FOR_SPRINT)
     super
   end
 end
