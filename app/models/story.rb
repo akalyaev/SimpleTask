@@ -50,9 +50,9 @@ class Story < ActiveRecord::Base
   end
 
   def self.user_options
-    developers = Developer.find(:all,
-                                :order => "up.given_names ASC, up.surname ASC",
-                                :joins => "LEFT JOIN user_profiles up ON (up.user_id = developers.user_id)")
+    developers = Developer
+                   .joins("LEFT JOIN user_profiles up ON (up.user_id = developers.user_id)")
+                   .order("up.given_names ASC, up.surname ASC")
     options = [["", nil]]
     for developer in developers do
       options << [developer.to_s, developer.id]
