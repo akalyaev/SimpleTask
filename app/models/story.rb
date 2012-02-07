@@ -29,20 +29,10 @@ class Story < ActiveRecord::Base
   }
 
   # validation
-  validates_presence_of :name
-  validates_length_of :name, :maximum => 128
-
-  validates_numericality_of :status,
-                            :only_integer => true,
-                            :less_than_or_equal_to => 4, :greater_than_or_equal_to => 0
-
-  validates_numericality_of :points,
-                            :only_integer => true,
-                            :less_than_or_equal_to => POINT_MAX, :greater_than_or_equal_to => POINT_MIN
-
-  validates_numericality_of :priority,
-                            :only_integer => true,
-                            :less_than_or_equal_to => 5, :greater_than_or_equal_to => 1
+  validates :name, :presence => true, :length => {:maximum => 128}
+  validates :status,   :numericality => true, :length => {:within => 0..4}
+  validates :points,   :numericality => true, :length => {:within => POINT_MIN..POINT_MAX}
+  validates :priority, :numericality => true, :length => {:within => 1..5}
 
   # get options section
   def self.status_options
