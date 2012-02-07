@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_one :user_profile
-  has_one :developer
+  has_one :user_profile, :dependent => :destroy
+  has_one :developer, :dependent => :destroy
   has_many :stories
   has_many :story_comments
 
