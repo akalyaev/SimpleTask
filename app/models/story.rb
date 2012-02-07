@@ -85,14 +85,16 @@ class Story < ActiveRecord::Base
   end
 
   def self.count_stories_grouped_by_status
-    data = {"All" => 0}
+    data = {'All' => 0}
+
     total = 0
-    STATUSES.each do |key, status|
-      count = Story.where(:status => key, :active => true).count
-      data[status] = count
+    grouped_data = Story.where(:active => true).group(:status).count
+    grouped_data.each do |status, count|
+      data[STATUSES[status]] = count
       total += count
     end
-    data["All"] = total
+    data['All'] = total
+
     data
   end
 end
