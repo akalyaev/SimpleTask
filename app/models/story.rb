@@ -50,14 +50,9 @@ class Story < ActiveRecord::Base
   end
 
   def self.user_options
-    developers = Developer
-                   .joins("LEFT JOIN user_profiles up ON (up.user_id = developers.user_id)")
-                   .order("up.given_names ASC, up.surname ASC")
-    options = [["", nil]]
-    for developer in developers do
-      options << [developer.to_s, developer.id]
-    end
-    options
+    developers = Developer.includes(:user_profile)
+                          .order('user_profiles.given_names ASC, user_profiles.surname ASC')
+    [["", nil]] + developers.collect { |d| [d.to_s, d.id] }
   end
 
   def self.points_options

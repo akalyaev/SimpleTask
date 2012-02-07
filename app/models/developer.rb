@@ -1,5 +1,6 @@
 class Developer < ActiveRecord::Base
   belongs_to :user
+  has_one :user_profile, :through => :user
 
   scope :free, where(:busy => false)
   scope :busy, where(:busy => true)
