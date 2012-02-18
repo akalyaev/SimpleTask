@@ -1,16 +1,20 @@
 class User < ActiveRecord::Base
+  before_create :encrypt_password
+
   has_one :user_profile, :dependent => :destroy
   has_one :developer, :dependent => :destroy
+
   has_many :stories
   has_many :story_comments
 
   validates :username, :presence => true, :length => {:maximum => 128}, :uniqueness => true
   validates :password, :presence => true, :length => {:maximum => 128}, :confirmation => true
 
-  def create
-    # TODO [Anton Kalyaev 21/01/2012] generate a salt here and hash a password
-    self.salt = "XXX"
-    super
+  def encrypt_password
+    if password.present?
+      self.salt = BCrypt::Engine.generate_salt
+      self.password = BCrypt::Engine.hash_secret(password, salt)
+    end
   end
 
   def to_s
