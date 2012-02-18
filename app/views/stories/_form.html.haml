@@ -1,33 +1,33 @@
-= form_for @story do |f|
+= form_for @story, :class => "form-horizontal" do |f|
   -if @story.errors.any?
-    .alert-message.block-message.error
+    .alert.alert-error
       %h2= "Sorry, there appears to be errors on this form. Please correct the following errors and resubmit."
       %ul
         - @story.errors.full_messages.each do |msg|
           %li= msg
   %fieldset
-    .clearfix
-      = f.label :name
+    .control-group
+      = f.label :name, :class => "control-label"
       .input
         = f.text_field :name, :placeholder => "Enter the name"
-    .clearfix
-      = f.label :description
+    .control-group
+      = f.label :description, :class => "control-label"
       .input
         = f.text_area :description
-    .clearfix
-      = f.label :status
+    .control-group
+      = f.label :status, :class => "control-label"
       .input
         = f.select :status, Story.status_options
-    .clearfix
-      = f.label :user_id, "Assignee"
+    .control-group
+      = f.label :user_id, "Assignee", :class => "control-label"
       .input
         = f.select :user_id, Story.user_options
-    .clearfix
-      = f.label :points
+    .control-group
+      = f.label :points, :class => "control-label"
       .input
         = f.select :points, Story.points_options
-    .clearfix
-      = f.label :priority
+    .control-group
+      = f.label :priority, :class => "control-label"
       .input
         = f.select :priority, Story.priority_options
     .actions

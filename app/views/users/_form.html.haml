@@ -1,26 +1,26 @@
 = form_for @user do |f|
   -if @user.errors.any?
-    .alert-message.block-message.error
+    .alert.alert-error
       %h2= "Sorry, there appears to be errors on this form. Please correct the following errors and resubmit."
       %ul
         - @user.errors.full_messages.each do |msg|
           %li= msg
 
   %fieldset
-    .clearfix
-      = f.label :username
+    .control-group
+      = f.label :username, :class => "control-label"
       .input
         = f.text_field :username, :placeholder => "Enter the username"
-    .clearfix
-      = f.label :password
+    .control-group
+      = f.label :password, :class => "control-label"
       .input
         = f.text_field :password, :type => :password
-    .clearfix
-      = f.label :is_active
+    .control-group
+      = f.label :is_active, :class => "control-label"
       .input
         = f.check_box :is_active
-    .clearfix
-      = f.label :is_super_admin
+    .control-group
+      = f.label :is_super_admin, :class => "control-label"
       .input
         = f.check_box :is_super_admin
   .actions

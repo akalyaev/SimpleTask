@@ -1,12 +1,12 @@
 = form_for @story_comment, :url => "#{@story.id}/story_comments" do |f|
   -if @story_comment.errors.any?
-    .alert-message.block-message.error
+    .alert.alert-error
       %h2= "Sorry, there appears to be errors on this form. Please correct the following errors and resubmit."
       %ul
         - @story_comment.errors.full_messages.each do |msg|
           %li= msg
   %fieldset
-    .clearfix
+    .control-group
       = f.text_area :comment, :placeholder => "Enter your comment", :cols => 50, :rows => 5
     .buttons
       = f.submit 'Send', :class => "btn primary"
