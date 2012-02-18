@@ -1,0 +1,18 @@
+.container
+  .hero-unit
+    %h1 Log in into SimpleTask
+    = form_tag sessions_path do
+      - if alert
+        .alert.alert-error
+          %p= alert
+      %fieldset
+        .control-group
+          = label_tag "username", "Login", :class => "control-label"
+          .input
+            = text_field_tag "username", nil, :placeholder => "Enter your username"
+        .control-group
+          = label_tag "password", nil, :class => "control-label"
+          .input
+            = password_field_tag "password"
+        .actions
+          = submit_tag 'Submit', :class => "btn btn-primary btn-large"

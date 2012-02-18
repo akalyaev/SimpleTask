@@ -17,6 +17,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.authenticate(username, password)
+    user = User.find_by_username(username)
+    if user && user.password == BCrypt::Engine.hash_secret(password, user.salt)
+      user
+    else
+      nil
+    end
+  end
+
   def to_s
     profile = self.user_profile
     profile ? profile.full_name : self.username

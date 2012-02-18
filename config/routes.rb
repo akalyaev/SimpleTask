@@ -1,4 +1,7 @@
 SimpleTask::Application.routes.draw do
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "log_out" => "sessions#destroy", :as => "log_out"
+
   get "story_comments_controller/create"
 
   root :to => 'stories#index'
@@ -8,6 +11,8 @@ SimpleTask::Application.routes.draw do
   end
 
   resources :users
+  resources :sessions
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
