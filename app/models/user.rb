@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :story_comments
 
   validates :username, :presence => true, :length => {:maximum => 128}, :uniqueness => true
-  validates :password, :presence => true, :length => {:maximum => 128}
+  validates :password, :presence => true, :length => {:maximum => 128}, :confirmation => true
 
   def create
     # TODO [Anton Kalyaev 21/01/2012] generate a salt here and hash a password
