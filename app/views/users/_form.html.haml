@@ -28,7 +28,7 @@
       .input
         = f.check_box :is_super_admin
   .actions
-    = f.submit 'Save', :class => "btn primary"
+    = f.submit 'Save', :class => "btn btn-primary"
     -if @user.persisted?
       = link_to 'Cancel', @user, :class => "btn"
     = link_to 'List', users_path, :class => "btn"

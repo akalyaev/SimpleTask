@@ -31,7 +31,7 @@
       .input
         = f.select :priority, Story.priority_options
     .actions
-      = f.submit 'Save', :class => "btn primary"
+      = f.submit 'Save', :class => "btn btn-primary"
       -if @story.persisted?
         = link_to 'Cancel', @story, :class => "btn"
       = link_to 'List', stories_path, :class => "btn"

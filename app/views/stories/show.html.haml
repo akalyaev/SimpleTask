@@ -38,7 +38,7 @@
       #comment_add_form{:style => "display: none;"}
         = render 'story_comments/form'
 
-= link_to 'Edit', edit_story_path(@story), :class => "btn primary"
+= link_to 'Edit', edit_story_path(@story), :class => "btn btn-primary"
 = link_to 'List', stories_path, :class => "btn"
 %p.pull-right
-  = link_to 'Delete', @story, :confirm => 'Are you sure?', :method => :delete, :class => "btn danger"
+  = link_to 'Delete', @story, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger"
