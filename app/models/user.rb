@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :stories
   has_many :story_comments
 
-  validates :username, :presence => true, :length => {:maximum => 128}
+  validates :username, :presence => true, :length => {:maximum => 128}, :uniqueness => true
   validates :password, :presence => true, :length => {:maximum => 128}
 
   def create
