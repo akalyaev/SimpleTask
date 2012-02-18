@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe StoryCommentsController do
+  before(:each) do
+    controller.stub!(:logged_in?).and_return(true)
+  end
 
   before do
     @story = Story.create({ :name => 'test' })

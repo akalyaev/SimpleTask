@@ -19,6 +19,9 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe StoriesController do
+  before(:each) do
+    controller.stub!(:logged_in?).and_return(true)
+  end
 
   # This should return the minimal set of attributes required to create a valid
   # Story. As you add validations to Story, be sure to

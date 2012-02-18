@@ -27,6 +27,9 @@
               = link_to "Log in", log_in_path
 
     .container-fluid
+      - if notice
+        .alert.alert-info
+          %p= notice
       .row-fluid
         = yield
       %hr
