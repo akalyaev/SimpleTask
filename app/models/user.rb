@@ -2,10 +2,13 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
 
   has_one :user_profile, :dependent => :destroy
+
   has_one :developer, :dependent => :destroy
 
   has_many :stories
   has_many :story_comments
+
+  accepts_nested_attributes_for :user_profile
 
   validates :username, :presence => true, :length => {:maximum => 128}, :uniqueness => true
   validates :password, :presence => true, :length => {:maximum => 128}, :confirmation => true
