@@ -6,9 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-users = User.create([{ username: 'admin', salt: '', password: 'admin', is_super_admin: true },
-                     { username: 'developer1', salt: '', password: 'developer' },
-                     { username: 'developer2', salt: '', password: 'developer' }])
+users = User.create([{ username: 'admin',
+                       salt: '$2a$10$lEVoakzEp/Nwu8NPmEuHNe',
+                       password: '$2a$10$lEVoakzEp/Nwu8NPmEuHNe9bCT2CY2oieP06E/DDSrsp...',
+                       is_super_admin: true },
+                     { username: 'developer1',
+                       salt: '$2a$10$8W6NBrAFMVIH24CY9.04rO',
+                       password: '$2a$10$8W6NBrAFMVIH24CY9.04rO19BJ9zL2Cg8EM.CvkUyX4/...' },
+                     { username: 'developer2',
+                       salt: '$2a$10$kae7f2x6tfOuIJebD5Lzku',
+                       password: '$2a$10$kae7f2x6tfOuIJebD5LzkuALNzK/yrJM//8qBdtw.bZO...' }])
 
 profiles = UserProfile.create([{ user: users[0], surname: "Doe", given_names: "John",
                                  gender: 0, phone: "444-444", mail: "admin@st.com" },
