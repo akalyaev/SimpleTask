@@ -4,4 +4,4 @@ log/
 tmp/
 
 # exclude sqlite3 files
-db/*.sqlite3
+*.sqlite3
