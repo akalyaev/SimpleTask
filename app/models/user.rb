@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  before_create :encrypt_password
+  before_save :encrypt_password
 
   has_one :user_profile, :dependent => :destroy
   has_one :developer, :dependent => :destroy
