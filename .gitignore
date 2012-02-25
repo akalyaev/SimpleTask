@@ -5,3 +5,5 @@ tmp/
 
 # exclude sqlite3 files
 db/*.sqlite3
+
+Gemfile.lock
