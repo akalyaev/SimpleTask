@@ -51,6 +51,11 @@ FactoryGirl.define do
     trait :rejected do
       status 4
     end
+
+    factory :new_story, :traits => [:new]
+    factory :new_story_in_backlog, :traits => [:new, :in_backlog]
+    factory :accepted_story, :traits => [:accepted, :assigned]
+    factory :rejected_story, :traits => [:rejected]
   end
 
   factory :story_comment do
