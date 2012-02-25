@@ -23,6 +23,34 @@ FactoryGirl.define do
 
   factory :story do
     name 'test'
+
+    trait :assigned do
+      assigned_to
+    end
+
+    trait :in_backlog do
+      active false
+    end
+
+    trait :new do
+      status 0
+    end
+
+    trait :started do
+      status 1
+    end
+
+    trait :finished do
+      status 2
+    end
+
+    trait :accepted do
+      status 3
+    end
+
+    trait :rejected do
+      status 4
+    end
   end
 
   factory :story_comment do
