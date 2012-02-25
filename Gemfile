@@ -31,6 +31,7 @@ group :test, :development do
   gem 'guard-rspec'
   gem 'libnotify'
   gem 'rb-inotify'
+  gem "factory_girl_rails", "~> 1.2"
 end
 
 group :production do
