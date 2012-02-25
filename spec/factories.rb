@@ -21,5 +21,13 @@ FactoryGirl.define do
     end
   end
 
+  factory :story do
+    name 'test'
+  end
 
+  factory :story_comment do
+    commenter
+    story
+    comment 'Test comment'
+  end
 end
