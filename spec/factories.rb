@@ -8,7 +8,18 @@ FactoryGirl.define do
 
   factory :user_profile do
     user
+
     surname 'Doe'
     given_names 'John'
   end
+
+  factory :developer do
+    user
+
+    factory :busy_developer do
+      busy true
+    end
+  end
+
+
 end
