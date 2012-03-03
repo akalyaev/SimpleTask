@@ -1,35 +1,40 @@
 require 'spec_helper'
+require 'factory_girl'
 
 describe Story do
-  def valid_attributes
-    { :name => 'Test task' }
-  end
 
-  #it "returns proper status" do
-  #  @story = Story.create! valid_attributes
-  #  @story.status = 0
-  #  @story.status_text.should == 'New'
-  #  @story.status = 1
-  #  @story.status_text.should == 'Started'
-  #  @story.status = 2
-  #  @story.status_text.should == 'Finished'
-  #  @story.status = 3
-  #  @story.status_text.should == 'Accepted'
-  #  @story.status = 4
-  #  @story.status_text.should == 'Rejected'
-  #end
-  #
-  #it "returns proper priority" do
-  #  @story = Story.create! valid_attributes
-  #  @story.priority = 1
-  #  @story.priority_text.should == 'Low'
-  #  @story.priority = 2
-  #  @story.priority_text.should == 'Normal'
-  #  @story.priority = 3
-  #  @story.priority_text.should == 'High'
-  #  @story.priority = 4
-  #  @story.priority_text.should == 'Urgent'
-  #  @story.priority = 5
-  #  @story.priority_text.should == 'Immediate'
-  #end
+  describe "states" do
+    before(:all) do
+      @user = FactoryGirl.create(:user)
+    end
+
+    after(:all) do
+      @user.destroy
+    end
+
+    describe "new" do
+      before(:all) do
+        @story = FactoryGirl.create(:new_story)
+      end
+
+      after(:all) do
+        @story.destroy
+      end
+
+      it "should be an initial state" do
+        @story.new?.should be_true
+      end
+
+      it "should change to :accepted on :accept if assigned" do
+        @story.user = @user
+        @story.accept!
+        @story.accepted?.should be_true
+      end
+
+      it "should raise error if not assigned" do
+        @story.user = nil
+        lambda {@story.accept!}.should raise_error
+      end
+    end
+  end
 end

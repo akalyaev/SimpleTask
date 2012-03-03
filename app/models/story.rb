@@ -27,6 +27,30 @@ class Story < ActiveRecord::Base
   validates :points,   :numericality => true, :length => {:within => POINT_MIN..POINT_MAX}
   validates :priority, :numericality => true, :length => {:within => 1..5}
 
+  #def initialize
+  #  assigned_to = nil
+  #  super
+  #end
+
+  state_machine :status, :initial => :new do
+
+    event :start do
+      transition :accepted => :started
+    end
+
+    event :finish do
+      transition :started => :finished
+    end
+
+    event :accept do
+      transition :new => :accepted, :if => lambda {|story| story.user_id?}
+    end
+
+    event :reject do
+      transition [:accepted, :started] => :rejected
+    end
+  end
+
   def self.user_options
     developers = Developer.includes(:user_profile)
                           .order('user_profiles.given_names ASC, user_profiles.surname ASC')
