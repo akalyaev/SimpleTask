@@ -3,7 +3,7 @@ class CreateStories < ActiveRecord::Migration
     create_table :stories do |t|
       t.string :name, limit: 128, null: false
       t.text :description
-      t.integer :status, default: 0 # 0 -new
+      t.string :status, limit: 50
       t.integer :user_id
       t.integer :points, default: 3
       t.integer :priority, default: 3
