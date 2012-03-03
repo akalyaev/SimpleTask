@@ -13,6 +13,10 @@
       -else
         %h4 Not assigned yet
     .span12.columns
+      - if !@story.assigned?
+        .alert
+          %strong Warning!
+          This story is not yet assigned. You can assign a developer to it by editing the story.
       %h3 Description
       %pre.prettyprint
         = @story.description
@@ -22,7 +26,6 @@
       %h3
         Priority -
         = @story.priority_text
-
       %h3 Comments
       #comments
         - @story_comments.each do |comment|
