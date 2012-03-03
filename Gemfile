@@ -25,6 +25,8 @@ gem 'therubyracer'
 gem 'haml'
 gem "haml-rails"
 
+gem 'state_machine'
+
 group :test, :development do
   gem 'turn', '< 0.8.3'
   gem 'rspec-rails'
