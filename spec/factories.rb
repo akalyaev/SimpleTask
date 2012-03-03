@@ -32,23 +32,23 @@ FactoryGirl.define do
     end
 
     trait :new do
-      status 0
+      status 'new'
     end
 
     trait :started do
-      status 1
+      status 'started'
     end
 
     trait :finished do
-      status 2
+      status 'finished'
     end
 
     trait :accepted do
-      status 3
+      status 'accepted'
     end
 
     trait :rejected do
-      status 4
+      status 'rejected'
     end
 
     factory :new_story, :traits => [:new]
