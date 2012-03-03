@@ -28,6 +28,7 @@ class Story < ActiveRecord::Base
   state_machine :status, :initial => :new do
     after_transition any => :rejected do |story, transition|
       story.user = nil
+      story.save
     end
 
     event :start do
@@ -39,7 +40,7 @@ class Story < ActiveRecord::Base
     end
 
     event :accept do
-      transition :new => :accepted, :if => lambda {|story| story.assigned?}
+      transition [:new, :rejected] => :accepted, :if => lambda {|story| story.assigned?}
     end
 
     event :reject do
