@@ -148,6 +148,6 @@ class Story < ActiveRecord::Base
   end
 
   def can_show_controls?(logged_user)
-    assigned? && user_id == logged_user.id
+    assigned? && active && user_id == logged_user.id
   end
 end
