@@ -36,11 +36,11 @@
       = button_tag 'Add comment', :class => "btn primary", :id => "comment_add_btn"
       #comment_add_form{:style => "display: none;"}
         = render 'story_comments/form'
+- if @story.can_show_controls?(@current_user)
+  - @story.status_events.each do |e|
+    = link_to e.capitalize, update_story_status_url({:id => @story.id, :event => e}), :class => "btn btn-primary"
 
-- @story.status_events.each do |e|
-  = link_to e.capitalize, update_story_status_url({:id => @story.id, :event => e}), :class => "btn btn-primary"
-
-- if !@story.finished?
+- if @story.can_edit?
   = link_to 'Edit', edit_story_path(@story), :class => "btn"
 
 = link_to 'List', stories_path, :class => "btn"

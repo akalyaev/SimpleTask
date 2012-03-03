@@ -95,4 +95,12 @@ class Story < ActiveRecord::Base
   def assigned?
     user_id?
   end
+
+  def can_edit?
+    !finished?
+  end
+
+  def can_show_controls?(logged_user)
+    assigned? && user_id = logged_user.id
+  end
 end
