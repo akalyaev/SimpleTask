@@ -14,10 +14,11 @@
       = f.label :description, :class => "control-label"
       .input
         = f.text_area :description
-    .control-group
-      = f.label :user_id, "Assignee", :class => "control-label"
-      .input
-        = f.select :user_id, Story.user_options
+    - if @story.can_assign?
+      .control-group
+        = f.label :user_id, "Assignee", :class => "control-label"
+        .input
+          = f.select :user_id, Story.user_options
     .control-group
       = f.label :points, :class => "control-label"
       .input

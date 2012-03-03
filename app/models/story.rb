@@ -45,6 +45,56 @@ class Story < ActiveRecord::Base
     event :reject do
       transition [:accepted, :started] => :rejected
     end
+
+    state :new do
+      def can_edit?
+        true
+      end
+
+      def can_assign?
+        true
+      end
+    end
+
+    state :accepted do
+      def can_edit?
+        true
+      end
+
+      def can_assign?
+        false
+      end
+    end
+
+    state :started do
+      def can_edit?
+        true
+      end
+
+      def can_assign?
+        false
+      end
+    end
+
+    state :finished do
+      def can_edit?
+        false
+      end
+
+      def can_assign?
+        false
+      end
+    end
+
+    state :rejected do
+      def can_edit?
+        true
+      end
+
+      def can_assign?
+        true
+      end
+    end
   end
 
   def self.user_options
@@ -94,10 +144,6 @@ class Story < ActiveRecord::Base
 
   def assigned?
     user_id?
-  end
-
-  def can_edit?
-    !finished?
   end
 
   def can_show_controls?(logged_user)
