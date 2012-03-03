@@ -89,4 +89,17 @@ class StoriesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def update_status
+    @story = Story.find(params[:id])
+    event = params[:event]
+
+    # change state of the story
+    @story.send(event)
+
+    respond_to do |format|
+      format.html { redirect_to @story }
+      format.json { render json: @story }
+    end
+  end
 end
