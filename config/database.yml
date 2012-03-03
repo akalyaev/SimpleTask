@@ -3,14 +3,14 @@ development:
   encoding: utf8
   database: simpletask_development
   pool: 5
-  username: tosha
+  username: antonk
 
 test:
   adapter: postgresql
   encoding: utf8
   database: simpletask_test
   pool: 5
-  username: tosha
+  username: antonk
 
 production:
   adapter: postgresql
