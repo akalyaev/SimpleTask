@@ -37,7 +37,9 @@
 - @story.status_events.each do |e|
   = link_to e.capitalize, update_story_status_url({:id => @story.id, :event => e}), :class => "btn btn-primary"
 
-= link_to 'Edit', edit_story_path(@story), :class => "btn"
+- if !@story.finished?
+  = link_to 'Edit', edit_story_path(@story), :class => "btn"
+
 = link_to 'List', stories_path, :class => "btn"
 %p.pull-right
   = link_to 'Delete', @story, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger"
