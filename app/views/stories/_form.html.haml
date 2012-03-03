@@ -15,10 +15,6 @@
       .input
         = f.text_area :description
     .control-group
-      = f.label :status, :class => "control-label"
-      .input
-        = f.select :status, Story.status_options
-    .control-group
       = f.label :user_id, "Assignee", :class => "control-label"
       .input
         = f.select :user_id, Story.user_options
