@@ -12,8 +12,6 @@ class Story < ActiveRecord::Base
   POINT_MIN = 1
   POINT_MAX = 5
 
-  STATUSES = [:new, :started, :finished, :accepted, :rejected]
-
   PRIORITIES = {
     1 => 'Low',
     2 => 'Normal',
@@ -27,11 +25,6 @@ class Story < ActiveRecord::Base
   validates :points,   :numericality => true, :length => {:within => POINT_MIN..POINT_MAX}
   validates :priority, :numericality => true, :length => {:within => 1..5}
 
-  #def initialize
-  #  assigned_to = nil
-  #  super
-  #end
-
   state_machine :status, :initial => :new do
 
     event :start do
@@ -43,7 +36,7 @@ class Story < ActiveRecord::Base
     end
 
     event :accept do
-      transition :new => :accepted, :if => lambda {|story| story.user_id?}
+      transition :new => :accepted, :if => lambda {|story| story.assigned?}
     end
 
     event :reject do
@@ -66,7 +59,7 @@ class Story < ActiveRecord::Base
   end
 
   def priority_text
-    PRIORITIES[self.priority]
+    PRIORITIES[priority]
   end
 
   def description_short
@@ -78,7 +71,7 @@ class Story < ActiveRecord::Base
   end
 
   def create
-    self.active = false if (Story.total_points(true) >= MAX_POINTS_FOR_SPRINT)
+    active = false if (Story.total_points(true) >= MAX_POINTS_FOR_SPRINT)
     super
   end
 
@@ -94,5 +87,9 @@ class Story < ActiveRecord::Base
     data['All'] = total
 
     data
+  end
+
+  def assigned?
+    user_id?
   end
 end
