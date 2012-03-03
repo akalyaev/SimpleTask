@@ -26,6 +26,9 @@ class Story < ActiveRecord::Base
   validates :priority, :numericality => true, :length => {:within => 1..5}
 
   state_machine :status, :initial => :new do
+    after_transition any => :rejected do |story, transition|
+      story.user = nil
+    end
 
     event :start do
       transition :accepted => :started
