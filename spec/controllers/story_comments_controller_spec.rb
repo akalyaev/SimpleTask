@@ -1,17 +1,16 @@
 require 'spec_helper'
 
 describe StoryCommentsController do
-  before(:each) do
-    controller.stub!(:logged_in?).and_return(true)
-  end
-
   before do
     @story = Story.create({ :name => 'test' })
     @user = User.create({ :username => 'test', :salt => '', :password => 'test' })
+    # FIXME [Anton Kalyaev 05/03/2012] this looks ugly
+    # log in user
+    session[:user_id] = @user.id
     @valid_attributes = { :comment => 'Test comment' }
   end
 
-  describe "GET 'create'" do
+  describe "GET create" do
     describe "with valid params" do
       it "creates a new comment" do
         expect {

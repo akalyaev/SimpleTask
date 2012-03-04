@@ -21,8 +21,9 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
 
     @story_comments = StoryComment.find_all_by_story_id(@story.id)
-    # TODO [Anton Kalyaev 25/01/2012] use currently logged user
-    @story_comment = StoryComment.new({ :story_id => @story.id, :user_id => User.find_by_is_super_admin(true) })
+    if @current_user
+      @story_comment = StoryComment.new({ :story_id => @story.id, :user_id => @current_user.id })
+    end
 
     respond_to do |format|
       format.html # show.html.erb
