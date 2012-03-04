@@ -163,4 +163,36 @@ describe StoriesController do
     end
   end
 
+  describe "POST update status" do
+    before(:each) do
+      @story = Story.create! valid_attributes
+      user = User.create!({ :username => 'test', :salt => '', :password => 'test' })
+      @story.user = user
+    end
+
+    #it "changes Story's state" do
+    #  post :update_status, :id => @story.id, :event => "accept"
+    #  assigns(:story).accepted?.should be_true
+    #end
+
+    it "redirects to the story" do
+      post :update_status, :id => @story.id, :event => "accept"
+      response.should redirect_to(@story)
+    end
+  end
+
+  describe "GET move" do
+    it "moves story to backlog" do
+      story = Story.create! valid_attributes
+      story.active.should be_true
+      get :move, :id => story.id
+      assigns(:story).active.should be_false
+    end
+
+    it "redirects to the story" do
+      story = Story.create! valid_attributes
+      get :move, :id => story.id
+      response.should redirect_to(story)
+    end
+  end
 end
