@@ -28,6 +28,7 @@ class Story < ActiveRecord::Base
   state_machine :status, :initial => :new do
     after_transition any => :rejected do |story, transition|
       story.user = nil
+      # FIXME [Anton Kalyaev 05/03/2012] story shouldn't save itself
       story.save
     end
 
