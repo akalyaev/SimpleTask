@@ -125,7 +125,7 @@ class Story < ActiveRecord::Base
   end
 
   def create
-    active = false if (Story.total_points(true) >= MAX_POINTS_FOR_SPRINT)
+    self.active = false if sprint_full?
     super
   end
 
@@ -149,5 +149,21 @@ class Story < ActiveRecord::Base
 
   def can_show_controls?(logged_user)
     assigned? && active && user_id == logged_user.id
+  end
+
+  def sprint_full?
+    Story.total_points(true) >= MAX_POINTS_FOR_SPRINT
+  end
+
+  def can_move_to_backlog?
+    active && (new? || rejected?)
+  end
+
+  def can_move_to_active_sprint?
+    !(active || sprint_full?)
+  end
+
+  def move
+    self.active = !active
   end
 end

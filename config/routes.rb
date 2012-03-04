@@ -19,6 +19,7 @@ SimpleTask::Application.routes.draw do
   get "story_comments_controller/create"
 
   resources :stories do
+    get 'move', :on => :member
     resources :story_comments
   end
 

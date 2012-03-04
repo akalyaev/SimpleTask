@@ -36,9 +36,15 @@
       = button_tag 'Add comment', :class => "btn primary", :id => "comment_add_btn"
       #comment_add_form{:style => "display: none;"}
         = render 'story_comments/form'
+
 - if @story.can_show_controls?(@current_user)
   - @story.status_events.each do |e|
     = link_to e.capitalize, update_story_status_url({:id => @story.id, :event => e}), :class => "btn btn-primary"
+
+- if @story.can_move_to_backlog?
+  = link_to 'Move to backlog', move_story_path(@story), :class => "btn"
+- elsif @story.can_move_to_active_sprint?
+  = link_to 'Move to active sprint', move_story_path(@story), :class => "btn"
 
 - if @story.can_edit?
   = link_to 'Edit', edit_story_path(@story), :class => "btn"

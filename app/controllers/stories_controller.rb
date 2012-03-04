@@ -102,4 +102,16 @@ class StoriesController < ApplicationController
       format.json { render json: @story }
     end
   end
+
+  def move
+    @story = Story.find(params[:id])
+    if @story.can_move_to_backlog? || @story.can_move_to_active_sprint?
+      @story.move
+      @story.save
+    end
+
+    respond_to do |format|
+      format.html { redirect_to @story, notice: 'Story was successfully moved.' }
+    end
+  end
 end
