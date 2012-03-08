@@ -1,0 +1,7 @@
+.row-fluid
+  .span6
+    %h2 History
+    .stories
+      - @stories.each do |story|
+        = render 'story', :story => story
+    = link_to 'Return to active sprint', stories_path, :class => "btn btn-primary"
