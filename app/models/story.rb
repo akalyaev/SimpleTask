@@ -3,8 +3,10 @@ class Story < ActiveRecord::Base
   belongs_to :user
 
   default_scope where(:deleted_at => nil)
-  scope :all_active, where(:active => true)
-  scope :backlog, where(:active => false)
+  scope :finished, where("stories.finished_at IS NOT NULL AND stories.finished_at <= ?", Time.zone.now)
+  scope :unfinished, where(:finished_at => nil)
+  scope :all_active, unfinished.where(:active => true)
+  scope :backlog, unfinished.where(:active => false)
 
   # const declaration
   MAX_POINTS_FOR_SPRINT = 10
@@ -33,7 +35,8 @@ class Story < ActiveRecord::Base
     end
 
     after_transition any => :finished do |story, transition|
-      story.finished_at = DateTime.now
+      story.finished_at = Time.zone.now
+      story.save
     end
 
     event :start do
@@ -138,7 +141,7 @@ class Story < ActiveRecord::Base
     data = {'All' => 0}
 
     total = 0
-    grouped_data = Story.where(:active => true).group(:status).count
+    grouped_data = Story.all_active.group(:status).count
     grouped_data.each do |status, count|
       data[status] = count
       total += count
