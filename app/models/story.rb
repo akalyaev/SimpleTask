@@ -32,6 +32,10 @@ class Story < ActiveRecord::Base
       story.save
     end
 
+    after_transition any => :finished do |story, transition|
+      story.finished_at = DateTime.now
+    end
+
     event :start do
       transition :accepted => :started
     end
