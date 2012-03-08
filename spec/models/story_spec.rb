@@ -54,5 +54,18 @@ describe Story do
         @story.user.should be_nil
       end
     end
+
+    describe "finished" do
+      before(:each) do
+        @story.user = @user
+        @story.accept
+        @story.start
+        @story.finish
+      end
+
+      it "story should have not nil finished_at" do
+        @story.finished_at.should_not be_nil
+      end
+    end
   end
 end
