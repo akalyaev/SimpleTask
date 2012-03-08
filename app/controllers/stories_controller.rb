@@ -115,4 +115,13 @@ class StoriesController < ApplicationController
       format.html { redirect_to @story, notice: 'Story was successfully moved.' }
     end
   end
+
+  def history
+    @stories = Story.finished
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @stories }
+    end
+  end
 end
