@@ -20,6 +20,7 @@ SimpleTask::Application.routes.draw do
 
   resources :stories do
     get 'move', :on => :member
+    get 'history', :on => :collection
     resources :story_comments
   end
 
