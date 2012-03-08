@@ -198,7 +198,7 @@ describe StoriesController do
 
   describe "GET history" do
     it "assigns finished stories as @stories" do
-      story = Story.create! valid_attributes.merge({:status => "finished", :finished_at => Time.zone.now })
+      story = Story.create! valid_attributes.merge({:status => "finished", :finished_at => Time.zone.now.yesterday })
       get :history
       assigns(:stories).should eq([story])
     end
