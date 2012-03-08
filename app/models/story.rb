@@ -3,7 +3,9 @@ class Story < ActiveRecord::Base
   belongs_to :user
 
   default_scope where(:deleted_at => nil)
-  scope :finished, where("stories.finished_at IS NOT NULL AND stories.finished_at <= ?", Time.zone.now)
+  scope :finished, lambda {
+    where("stories.finished_at IS NOT NULL AND stories.finished_at <= ?", Time.zone.now)
+  }
   scope :unfinished, where(:finished_at => nil)
   scope :all_active, unfinished.where(:active => true)
   scope :backlog, unfinished.where(:active => false)
