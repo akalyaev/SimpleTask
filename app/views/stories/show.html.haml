@@ -46,6 +46,10 @@
 - if @story.can_edit?
   = link_to 'Edit', edit_story_path(@story), :class => "btn"
 
-= link_to 'List', stories_path, :class => "btn"
+- if @story.finished?
+  = link_to 'History', history_stories_path, :class => "btn"
+- else
+  = link_to 'List', stories_path, :class => "btn"
+
 %p.pull-right
   = link_to 'Delete', @story, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger"
