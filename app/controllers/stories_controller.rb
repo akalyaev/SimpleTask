@@ -117,7 +117,7 @@ class StoriesController < ApplicationController
   end
 
   def history
-    @stories = Story.finished
+    @stories = Story.finished.order('finished_at DESC')
 
     respond_to do |format|
       format.html

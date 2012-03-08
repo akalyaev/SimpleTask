@@ -4,7 +4,10 @@
   %p{:class => "priority #{story.priority_text.downcase}", :title => "#{story.priority_text} priority"}
   %h3= link_to story.name, story
   %p.pull-right
-    %span{:class => "label #{story.status}"}= story.status
+    %span{:class => "label #{story.status}"}
+      = story.status
+      - if story.finished?
+        at #{story.finished_at.strftime("%d/%m/%Y %H:%M")}
   .description
     = story.description_short
   -#%td= story.user_id
