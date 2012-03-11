@@ -14,7 +14,7 @@ class Developer < ActiveRecord::Base
   end
 
   def self.options_for_select
-    developers = Developer
+    developers = self
       .includes(:user_profile)
       .order('user_profiles.given_names ASC, user_profiles.surname ASC')
     [["", nil]] + developers.collect { |d| [d.to_s, d.id] }
