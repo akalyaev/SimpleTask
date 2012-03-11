@@ -30,7 +30,7 @@
       #comments
         - @story_comments.each do |comment|
           .comment
-            %p= "#{comment.user} (#{comment.created_at})"
+            %p= "#{comment.user} at #{comment.created_at.strftime("%d/%m/%Y %H:%M")}"
             %pre
               = comment.comment
       = button_tag 'Add comment', :class => "btn primary", :id => "comment_add_btn"
