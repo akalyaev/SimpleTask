@@ -2,6 +2,10 @@ class Story < ActiveRecord::Base
   has_many :story_comments, :dependent => :destroy
   belongs_to :user
 
+  # callbacks
+  before_create :define_active
+
+  # scopes
   default_scope where(:deleted_at => nil)
   scope :finished, lambda {
     where("stories.finished_at IS NOT NULL AND stories.finished_at <= ?", Time.zone.now)
@@ -126,11 +130,6 @@ class Story < ActiveRecord::Base
     where(:active => active).sum(:points)
   end
 
-  def create
-    self.active = false if sprint_full?
-    super
-  end
-
   def self.count_stories_grouped_by_status
     data = {'All' => 0}
 
@@ -167,5 +166,11 @@ class Story < ActiveRecord::Base
 
   def move
     self.active = !active
+  end
+
+  private
+
+  def define_active
+    self.active = false if sprint_full?
   end
 end
