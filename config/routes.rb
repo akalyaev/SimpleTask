@@ -4,11 +4,14 @@ SimpleTask::Application.routes.draw do
 
   root :to => 'stories#index'
 
-  match "stories/:id/:event" => "stories#update_status", :as => :update_story_status
   get "story_comments_controller/create"
 
   resources :stories do
-    get 'move', :on => :member
+    member do
+      get 'move'
+      post 'update_status'
+    end
+
     get 'history', :on => :collection
     resources :story_comments
   end
