@@ -110,38 +110,12 @@ class Story < ActiveRecord::Base
     end
   end
 
-  def self.points_options
-    POINT_MIN..POINT_MAX
-  end
-
-  def self.priority_options
-    PRIORITIES.invert
-  end
-
   def priority_text
     PRIORITIES[priority]
   end
 
   def description_short
     description.truncate(128)
-  end
-
-  def self.total_points(active=true)
-    where(:active => active).sum(:points)
-  end
-
-  def self.count_stories_grouped_by_status
-    data = {'All' => 0}
-
-    total = 0
-    grouped_data = Story.all_active.group(:status).count
-    grouped_data.each do |status, count|
-      data[status] = count
-      total += count
-    end
-    data['All'] = total
-
-    data
   end
 
   def assigned?
@@ -162,6 +136,35 @@ class Story < ActiveRecord::Base
 
   def move
     self.active = !active
+  end
+
+  class << self
+
+    def points_options
+      POINT_MIN..POINT_MAX
+    end
+
+    def priority_options
+      PRIORITIES.invert
+    end
+
+    def total_points(active=true)
+      where(:active => active).sum(:points)
+    end
+
+    def count_stories_grouped_by_status
+      data = {'All' => 0}
+
+      total = 0
+      grouped_data = Story.all_active.group(:status).count
+      grouped_data.each do |status, count|
+        data[status] = count
+        total += count
+      end
+      data['All'] = total
+
+      data
+    end
   end
 
   private
