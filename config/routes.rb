@@ -1,21 +1,10 @@
-class StoryEventConstraint
-  def self.matches?(request)
-    story = Story.find(request.params[:id])
-    if story
-      story.status_events.include? request.params[:event].to_sym
-    else
-      false
-    end
-  end
-end
-
 SimpleTask::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "log_out" => "sessions#destroy", :as => "log_out"
 
   root :to => 'stories#index'
 
-  match "stories/:id/:event" => "stories#update_status", :as => :update_story_status, :constraints => StoryEventConstraint
+  match "stories/:id/:event" => "stories#update_status", :as => :update_story_status
   get "story_comments_controller/create"
 
   resources :stories do
