@@ -10,7 +10,7 @@ class Developer < ActiveRecord::Base
   end
 
   def count_active_stories
-    Story.where(:user_id => self.user_id, :active => true).count
+    Story.all_active.where(:user_id => user_id).count
   end
 
   def self.options_for_select
