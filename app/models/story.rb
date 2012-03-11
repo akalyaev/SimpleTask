@@ -36,9 +36,8 @@ class Story < ActiveRecord::Base
       story.save
     end
 
-    after_transition any => :finished do |story, transition|
+    before_transition any => :finished do |story, transition|
       story.finished_at = Time.zone.now
-      story.save
     end
 
     event :start do
