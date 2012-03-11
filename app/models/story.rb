@@ -175,5 +175,6 @@ class Story < ActiveRecord::Base
 
     def define_active
       self.active = false if sprint_full?
+      true # if we returns false, all the later callbacks and the associated action are cancelled.
     end
 end
