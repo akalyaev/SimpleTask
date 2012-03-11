@@ -18,7 +18,7 @@
       .control-group
         = f.label :user_id, "Assignee", :class => "control-label"
         .input
-          = f.select :user_id, Story.user_options
+          = f.select :user_id, Developer.options_for_select
     .control-group
       = f.label :points, :class => "control-label"
       .input

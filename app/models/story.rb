@@ -106,12 +106,6 @@ class Story < ActiveRecord::Base
     end
   end
 
-  def self.user_options
-    developers = Developer.includes(:user_profile)
-                          .order('user_profiles.given_names ASC, user_profiles.surname ASC')
-    [["", nil]] + developers.collect { |d| [d.to_s, d.id] }
-  end
-
   def self.points_options
     POINT_MIN..POINT_MAX
   end
