@@ -152,10 +152,6 @@ class Story < ActiveRecord::Base
     assigned? && active && user_id == logged_user.id
   end
 
-  def sprint_full?
-    Story.total_points(true) >= MAX_POINTS_FOR_SPRINT
-  end
-
   def can_move_to_backlog?
     active && (new? || rejected?)
   end
@@ -169,6 +165,10 @@ class Story < ActiveRecord::Base
   end
 
   private
+
+    def sprint_full?
+      Story.total_points(true) >= MAX_POINTS_FOR_SPRINT
+    end
 
     def define_active
       self.active = false if sprint_full?
