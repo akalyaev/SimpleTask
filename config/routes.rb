@@ -4,8 +4,6 @@ SimpleTask::Application.routes.draw do
 
   root :to => 'stories#index'
 
-  get "story_comments_controller/create"
-
   resources :stories do
     member do
       get 'move'
@@ -13,6 +11,7 @@ SimpleTask::Application.routes.draw do
     end
 
     get 'history', :on => :collection
+
     resources :story_comments
   end
 
