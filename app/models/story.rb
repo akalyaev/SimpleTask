@@ -170,7 +170,7 @@ class Story < ActiveRecord::Base
 
   private
 
-  def define_active
-    self.active = false if sprint_full?
-  end
+    def define_active
+      self.active = false if sprint_full?
+    end
 end
