@@ -19,7 +19,7 @@ module CalendarHelper
   def event_calendar
     calendar event_calendar_options do |args|
       event = args[:event]
-      %(<a href="/events/#{event.id}" title="#{h(event.name)}">#{h(event.name)}</a>)
+      %(<a href="/stories/#{event.id}" title="#{h(event.name)}">#{h(event.name)}</a>)
     end
   end
 end
