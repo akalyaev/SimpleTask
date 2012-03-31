@@ -26,6 +26,7 @@ gem 'haml'
 gem "haml-rails"
 
 gem 'state_machine'
+gem 'event-calendar', :require => 'event_calendar'
 
 group :test, :development do
   gem 'turn', '< 0.8.3'
