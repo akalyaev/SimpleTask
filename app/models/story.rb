@@ -2,7 +2,7 @@ class Story < ActiveRecord::Base
   has_many :story_comments, :dependent => :destroy
   belongs_to :user
 
-  has_event_calendar :start_at_field  => 'created_at', :end_at_field => 'finished_at'
+  has_event_calendar :start_at_field  => 'created_at', :end_at_field => 'updated_at'
 
   # callbacks
   before_create :define_active
