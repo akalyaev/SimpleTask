@@ -18,6 +18,9 @@ SimpleTask::Application.routes.draw do
   resources :users
   resources :sessions
 
+  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar,
+        :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
